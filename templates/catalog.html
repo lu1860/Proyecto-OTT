@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="catalog-page">
+
+<header class="catalog-header">
+    <h1>🎬 Catálogo OTT</h1>
+    <a href="/home" class="back-link">⬅ Volver</a>
+</header>
+
+<main class="catalog-container">
+ {% for show in shows %}
+<div class="catalog-card">
+
+    <img src="{{ show.image.medium if show.image else '' }}" alt="{{ show.name }}">
+
+    <h3>{{ show.name }}</h3>
+
+  {% if show.access == "FREE" %}
+    <p class="free-label">🎁 Contenido GRATIS</p>
+ <br>
+   <a href="/watch/{{ show.id }}" class="btn-play">
+    ▶ Ver ahora
+    </a>
+{% elif subscription_type == "PREMIUM" %}
+    <p class="premium-label">⭐ PREMIUM</p>
+<br>
+   <a href="/watch/{{ show.id }}" class="btn-play">
+    ▶ Ver ahora
+   </a>
+
+{% else %}
+    <p class="blocked">🔒 Solo para PREMIUM</p>
+{% endif %}
+
+</div>
+{% endfor %}
+
+</main>
+
+</body>
+</html>

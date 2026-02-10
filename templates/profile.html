@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="profile-page">
+
+    <header id="profile-header">
+        <h1>Perfil de <span class="username">{{ username }}</span></h1>
+        <a href="/home" class="back-link">⬅ Volver al inicio</a>
+    </header>
+
+    <main id="profile-content">
+
+        <section class="profile-section">
+            <h2>Información de la cuenta</h2>
+            <p>
+                Suscripción actual:
+                <strong class="subscription">{{ subscription_type }}</strong>
+            </p>
+        </section>
+
+        <section class="profile-section">
+            <h2>Actualizar suscripción</h2>
+
+            <form method="POST" id="subscription-form">
+                <label for="subscription_type">Tipo de suscripción</label>
+
+                <select name="subscription_type" id="subscription_type">
+                    <option value="FREE">Gratis</option>
+                    <option value="PREMIUM">Premium</option>
+                </select>
+
+                <button type="submit" class="btn-primary">
+                    Actualizar suscripción
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>

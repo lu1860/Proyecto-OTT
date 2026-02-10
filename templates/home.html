@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="home-page">
+
+    <div class="home-container">
+
+        <h1 id="welcome-title">
+            Bienvenido, <span class="username">{{ username }}</span>
+        </h1>
+
+        <p class="subscription-info">
+            Tipo de suscripción:
+            <strong class="subscription">{{ subscription_type }}</strong>
+        </p>
+
+        <hr>
+
+        <nav class="main-nav">
+            <a href="/catalog" class="nav-link">Catálogo</a>
+            <a href="/profile" class="nav-link">Perfil</a>
+            <a href="/logout" class="nav-link logout">Cerrar sesión</a>
+        </nav>
+
+    </div>
+
+</body>
+</html>
