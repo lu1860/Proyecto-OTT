@@ -35,7 +35,7 @@ def register():
         elif len(password) < 6:
             message = "❌ La contraseña debe tener mínimo 6 caracteres."
 
-        elif user_exists(username):   # 👈 función que valida si existe
+        elif user_exists(username):   # función que valida si existe
             message = "❌ El usuario ya existe."
 
         else:
