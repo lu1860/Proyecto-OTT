@@ -5,23 +5,28 @@
     <title>{{ show.name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body class="watch-page">
 
-<header class="catalog-header">
+<div class="watch-container">
+
     <h1>{{ show.name }}</h1>
-    <a href="/catalog" class="back-link">⬅ Volver al catálogo</a>
-</header>
 
-<main class="watch-container">
+    <div class="video-container">
+        <video controls width="100%">
+            <source src="{{ video_url }}" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+    </div>
 
-    <img src="{{ show.image.original if show.image else '' }}" alt="{{ show.name }}">
+    <div class="show-info">
+        <p><strong>Género:</strong> {{ show.genres | join(', ') }}</p>
+        <p>{{ show.summary | safe }}</p>
+    </div>
 
-    <p class="watch-info">
-        🎬 Reproducción simulada <br>
-        Este contenido representa el streaming dentro del MVP
-    </p>
+    <a href="/catalog" class="btn-primary">⬅ Volver al catálogo</a>
 
-</main>
+</div>
 
 </body>
 </html>

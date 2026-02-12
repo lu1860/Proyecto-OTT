@@ -348,3 +348,45 @@ button:hover {
     background-color: #ffdddd;
     color: #a94442;
 }
+.watch-page {
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+
+.watch-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-bottom: 30px;
+}
+
+.video-container iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.show-info {
+    margin-top: 20px;
+}
+
+.show-info p {
+    line-height: 1.6;
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e50914;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

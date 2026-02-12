@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, redirect, session
-from models import create_tables, create_user, get_user, get_user_by_id, update_subscription_type, user_exists
+from flask import Flask, render_template, request, redirect, session,flash
+from models import create_tables, create_user, get_user, get_user_by_id, update_subscription_type, user_exists,save_watch_history, get_continue_watching
 import requests
 from flask import abort
-from flask import Flask, render_template, request, redirect, session, flash
 
 
 app = Flask(__name__)
@@ -127,14 +126,16 @@ def watch(show_id):
     if not show:
         abort(404)
 
-    # Definir acceso (misma lógica del catálogo)
     index = shows.index(show)
     access = "FREE" if index < 4 else "PREMIUM"
 
     if access == "PREMIUM" and session["subscription_type"] != "PREMIUM":
         return render_template("blocked.html", show=show)
 
-    return render_template("watch.html", show=show)
+    video_url = "https://www.w3schools.com/html/mov_bbb.mp4"
+
+    return render_template("watch.html", show=show, video_url=video_url)
+
 
     
 if __name__ == "__main__":

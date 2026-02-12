@@ -11,6 +11,18 @@ def create_tables():
     cursor = conn.cursor()
 
     cursor.execute("""
+CREATE TABLE IF NOT EXISTS watch_history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    show_id INTEGER,
+    show_name TEXT,
+    video_url TEXT,
+    watched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+)
+""")
+
+    cursor.execute("""
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT NOT NULL UNIQUE,
@@ -100,3 +112,31 @@ def update_subscription_type(user_id, new_type):
     conn.commit()
     conn.close()
     
+def save_watch_history(user_id, show_id, show_name, video_url):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO watch_history (user_id, show_id, show_name, video_url)
+        VALUES (?, ?, ?, ?)
+    """, (user_id, show_id, show_name, video_url))
+
+    conn.commit()
+    conn.close()
+
+
+def get_continue_watching(user_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT show_id, show_name, video_url
+        FROM watch_history
+        WHERE user_id = ?
+        ORDER BY watched_at DESC
+        LIMIT 5
+    """, (user_id,))
+
+    data = cursor.fetchall()
+    conn.close()
+    return data
