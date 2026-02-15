@@ -132,7 +132,22 @@ def watch(show_id):
     if access == "PREMIUM" and session["subscription_type"] != "PREMIUM":
         return render_template("blocked.html", show=show)
 
-    video_url = "https://www.w3schools.com/html/mov_bbb.mp4"
+    youtube_videos = {
+        0: "f_Y5YeYrqUk",  
+        1: "HQXmfAGOe0Y",
+        2: "tUQ_ZXjzkiQ",
+        3: "nPL9wWWuFqA",
+        4: "WkL7cpG2UhE",  
+        5: "aDrsItJ_HU4",
+        6: "Liucv1Hte4c",
+        7: "sefQqCMusJI",
+        8: "R1C8ygebkng",  
+        9: "2-4xKNZ_gaA",
+        10: "VwOPA2upeCA",
+        11: "W057R9MNRw4"
+    }
+    video_url = youtube_videos.get(index)
+    
 
     return render_template("watch.html", show=show, video_url=video_url)
 
