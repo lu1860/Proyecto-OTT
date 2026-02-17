@@ -112,6 +112,10 @@ def update_subscription_type(user_id, new_type):
     conn.commit()
     conn.close()
     
+# Nota: Estas funciones están pensadas
+# para una segunda versión (perfiles e historial "continuar viendo").
+# En esta entrega solo está implementada la versión básica.    
+    
 def save_watch_history(user_id, show_id, show_name, video_url):
     conn = get_connection()
     cursor = conn.cursor()
