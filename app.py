@@ -44,7 +44,7 @@ def register():
     return render_template("registro.html", message=message)
 
 @app.route("/login", methods=["GET", "POST"])
-def login():
+def login():   
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]

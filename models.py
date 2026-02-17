@@ -31,14 +31,6 @@ CREATE TABLE IF NOT EXISTS watch_history (
     )
     """)
 
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS profiles (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER,
-        name TEXT,
-        FOREIGN KEY (user_id) REFERENCES users (id)
-    )
-    """)
 
     conn.commit()
     conn.close()
@@ -112,35 +104,4 @@ def update_subscription_type(user_id, new_type):
     conn.commit()
     conn.close()
     
-# Nota: Estas funciones están pensadas
-# para una segunda versión (perfiles e historial "continuar viendo").
-# En esta entrega solo está implementada la versión básica.    
-    
-def save_watch_history(user_id, show_id, show_name, video_url):
-    conn = get_connection()
-    cursor = conn.cursor()
 
-    cursor.execute("""
-        INSERT INTO watch_history (user_id, show_id, show_name, video_url)
-        VALUES (?, ?, ?, ?)
-    """, (user_id, show_id, show_name, video_url))
-
-    conn.commit()
-    conn.close()
-
-
-def get_continue_watching(user_id):
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        SELECT show_id, show_name, video_url
-        FROM watch_history
-        WHERE user_id = ?
-        ORDER BY watched_at DESC
-        LIMIT 5
-    """, (user_id,))
-
-    data = cursor.fetchall()
-    conn.close()
-    return data
