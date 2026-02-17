@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session,flash
-from models import create_tables, create_user, get_user, get_user_by_id, update_subscription_type, user_exists,save_watch_history, get_continue_watching
+from models import create_tables, create_user, get_user, get_user_by_id, update_subscription_type, user_exists
 import requests
 from flask import abort
 
