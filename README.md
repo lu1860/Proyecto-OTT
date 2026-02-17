@@ -4,7 +4,7 @@
 
 Este proyecto consiste en el desarrollo de una plataforma OTT (Over-The-Top) tipo Netflix utilizando **Python Flask**, **SQLite**, **HTML5** y **CSS3**.
 
-La aplicación permite a los usuarios registrarse, iniciar sesión, visualizar un catálogo de películas o series, reproducir contenido dinámicamente y mantener un historial en la sección **"Continuar viendo"**.
+La aplicación permite a los usuarios registrarse, iniciar sesión, visualizar un catálogo de películas o series, reproducir contenido dinámicamente.
 
 El sistema implementa control de suscripción (FREE / PREMIUM), validaciones backend, manejo de sesiones y persistencia de datos.
 
@@ -23,8 +23,6 @@ Desarrollar una aplicación web que simule el funcionamiento básico de una plat
 - Validar datos desde el backend.
 - Manejar sesiones de usuario.
 - Reproducir contenido dinámicamente según selección.
-- Guardar historial de visualización.
-- Implementar sección "Continuar viendo".
 - Diferenciar acceso según tipo de suscripción.
 - Aplicar diseño visual tipo plataforma de streaming.
 
@@ -118,17 +116,6 @@ La base de datos se genera automáticamente al ejecutar la aplicación por prime
 
 ---
 
-### movies / shows 
-
-| Campo       | Tipo     | Descripción                          |
-|------------|----------|--------------------------------------|
-| id         | INTEGER  | Clave primaria (PK)                  |
-| title      | TEXT     | Título de la película o serie        |
-| description| TEXT     | Descripción del contenido            |
-| video_url  | TEXT     | URL del video a reproducir           |
-
----
-
 ###  watch_history 
 
 | Campo       | Tipo      | Descripción                                      |
@@ -140,7 +127,7 @@ La base de datos se genera automáticamente al ejecutar la aplicación por prime
 | video_url  | TEXT     | URL del video reproducido                        |
 | watched_at | TIMESTAMP| Fecha y hora de reproducción                     |
 
-Esta tabla permite almacenar el historial de reproducción para la funcionalidad **"Continuar viendo"**.
+Esta tabla está pensada para una posible funcionalidad futura de **"Continuar viendo"**.
 
 #  Funcionalidades Implementadas 
 
@@ -194,8 +181,7 @@ Para probar el sistema:
 1. Registrar usuario nuevo.
 2. Iniciar sesión.
 3. Seleccionar contenido.
-4. Verificar que aparezca en "Continuar viendo".
-5. Probar restricción FREE / PREMIUM.
+4. Probar restricción FREE / PREMIUM.
 
 ---
 
