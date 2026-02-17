@@ -12,6 +12,11 @@ Este proyecto representa un **MVP (Producto Mínimo Viable)** funcional de una p
 
 ---
 
+## Autores
+
+- Juan Pablo Berrío Díaz
+- Sara Moncada Correa
+
 #  Objetivos del Proyecto 
 
 ## Objetivo General
